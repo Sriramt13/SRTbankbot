@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card srt-tile p-3">
+  <h4>Branch & ATM Locator</h4>
+  <hr/>
+  <div class="row">
+    {% for b in branches %}
+    <div class="col-md-4">
+      <div class="card p-3 mb-3">
+        <h6 class="mb-1">{{ b.name }}</h6>
+        <div class="text-muted">{{ b.address }}</div>
+        <div class="small mt-1">IFSC: {{ b.ifsc }}</div>
+        <div class="badge bg-primary mt-2">{{ b.city }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

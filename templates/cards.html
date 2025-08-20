@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card srt-tile p-3">
+      <h5>Debit Card • **** {{ cards.debit.last4 }}</h5>
+      <p>Status: <strong>{{ cards.debit.status }}</strong></p>
+      <p>ATM Limit: {{ cards.debit.limit }}</p>
+      <button class="btn btn-outline-danger btn-sm" onclick="alert('To block your debit card, call 1800-123-4567 or visit your branch.')">Block Card</button>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card srt-tile p-3">
+      <h5>Credit Card • **** {{ cards.credit.last4 }}</h5>
+      <p>Status: <strong>{{ cards.credit.status }}</strong></p>
+      <p>Credit Limit: {{ cards.credit.limit }}</p>
+      <button class="btn btn-outline-danger btn-sm" onclick="alert('To block your credit card, call 1800-123-4567 or use the mobile app.')">Block Card</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

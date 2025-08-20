@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card srt-tile">
+      <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">SRT Assistant</h5>
+        <small class="text-muted">{{ now }}</small>
+      </div>
+      <div id="chat-messages" style="height: 360px; overflow-y:auto; padding:16px;">
+        <div><b>Assistant:</b> Hello! I can help with balance, loans, cards, and branches. How can I help?</div>
+      </div>
+      <div class="p-3 d-flex gap-2">
+        <input id="chat-input" class="form-control" placeholder="Type your message..." />
+        <button class="btn btn-srt" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function sendMessage(){
+  const input = document.getElementById('chat-input');
+  const text = (input.value || '').trim();
+  if(!text) return;
+  const box = document.getElementById('chat-messages');
+  box.insertAdjacentHTML('beforeend', `<div><b>You:</b> ${text}</div>`);
+  input.value = '';
+
+  const res = await fetch('/api/chat', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({message: text})
+  });
+  const data = await res.json();
+  box.insertAdjacentHTML('beforeend', `<div><b>Assistant:</b> ${data.reply}</div>`);
+  box.scrollTop = box.scrollHeight;
+}
+</script>
+{% endblock %}

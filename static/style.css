@@ -1,0 +1,68 @@
+/* Global Theme: Navy + White */
+
+/* Background for all pages */
+body {
+  background: linear-gradient(135deg, #001f3f, #003366);
+  color: white;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar-custom {
+  background-color: transparent !important;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white !important;
+}
+.nav-link {
+  color: white !important;
+  font-weight: 500;
+  margin-left: 20px;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.btn-light {
+  background-color: white;
+  color: #003366;
+  font-weight: bold;
+  border-radius: 30px;
+}
+.btn-outline-light {
+  border: 2px solid white;
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
+}
+.btn-light:hover {
+  background-color: #f0f0f0;
+}
+
+/* Forms (Login, Register, etc.) */
+.form-container {
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent white box */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  max-width: 400px;
+  margin: auto;
+  color: white;
+}
+.form-control {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 5px #00aaff;
+}

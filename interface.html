@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BankBot - Banking Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e6f0ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chat-container {
+      width: 420px;
+      background: #fff;
+      border-radius: 8px;
+      border: 2px solid #007bff;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #007bff;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .chat-box {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    .message {
+      margin: 8px 0;
+      padding: 8px;
+      border-radius: 6px;
+      max-width: 75%;
+    }
+    .user-message {
+      background: #007bff;
+      color: white;
+      margin-left: auto;
+      text-align: right;
+    }
+    .bot-message {
+      background: #f1f1f1;
+      color: black;
+      margin-right: auto;
+      text-align: left;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+    .chat-input button {
+      padding: 10px 15px;
+      border: none;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    .chat-input button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">🏦 BankBot</div>
+    <div class="chat-box" id="chat-box">
+      <div class="bot-message message">Hello! 👋 I’m BankBot. Ask me about balance, loans, cards, or branches.</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type your question...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      let input = document.getElementById("user-input");
+      let message = input.value.trim();
+      if (message === "") return;
+
+      let chatBox = document.getElementById("chat-box");
+
+      // Add user message
+      let userMsg = document.createElement("div");
+      userMsg.className = "message user-message";
+      userMsg.innerText = message;
+      chatBox.appendChild(userMsg);
+
+      // Add BankBot dummy replies
+      let botMsg = document.createElement("div");
+      botMsg.className = "message bot-message";
+
+      if (message.toLowerCase().includes("balance")) {
+        botMsg.innerText = "You can check your balance using net banking, ATM, or our mobile app.";
+      } else if (message.toLowerCase().includes("loan")) {
+        botMsg.innerText = "We offer home, car, and personal loans. Interest rates start from 7.5%.";
+      } else if (message.toLowerCase().includes("card")) {
+        botMsg.innerText = "To block your card, please call 1800-123-456 or use the mobile app.";
+      } else if (message.toLowerCase().includes("branch")) {
+        botMsg.innerText = "You can find your nearest branch using our online branch locator.";
+      } else {
+        botMsg.innerText = "Sorry, I don’t understand that yet. Please ask about balance, loan, card, or branch.";
+      }
+
+      chatBox.appendChild(botMsg);
+
+      // Scroll to bottom
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
