@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SRT Bank - Home</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
@@ -11,12 +12,14 @@
       height: 100%;
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
     }
+
     /* Gradient background */
     .hero {
       background: linear-gradient(135deg, #001f3f, #003366);
       color: white;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -24,51 +27,90 @@
       text-align: center;
       padding: 0 20px;
     }
+
     .hero h1 {
       font-size: 2.5rem;
       font-weight: bold;
-      color: white; /* force white heading */
+      color: white;
     }
+
     .hero p {
       font-size: 1.2rem;
       margin-top: 10px;
-      color: white; /* force white subheading */
+      color: white;
     }
+
     .hero .btn {
       margin: 10px;
-      padding: 10px 20px;
+      padding: 10px 25px;
       font-size: 1rem;
       border-radius: 30px;
-      border: none; /* remove outlines */
+      border: none;
+      transition: 0.3s;
     }
+
     .btn-light {
       background-color: white;
       color: #003366;
       font-weight: bold;
     }
+
+    .btn-light:hover {
+      background-color: #f0f0f0;
+      color: #003366;
+    }
+
     .btn-outline-light {
       border: 2px solid white;
       color: white;
       font-weight: bold;
     }
+
+    .btn-outline-light:hover {
+      background-color: white;
+      color: #003366;
+    }
+
     /* Navbar */
     .navbar-custom {
       background-color: transparent !important;
       position: absolute;
       top: 0;
       width: 100%;
+      z-index: 10;
     }
+
     .navbar-brand {
       font-weight: bold;
       font-size: 1.5rem;
     }
+
     .nav-link {
       color: white !important;
       font-weight: 500;
       margin-left: 20px;
     }
+
     .nav-link:hover {
       text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .navbar .ms-auto {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-link {
+        margin-left: 0;
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
@@ -77,11 +119,18 @@
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
     <div class="container">
       <a class="navbar-brand" href="#">🏦 SRT Bank</a>
-      <div class="ms-auto d-flex align-items-center">
-        <a href="/login" class="btn btn-light me-3">Internet Banking</a>
-        <a class="nav-link" href="#services">Services</a>
-        <a class="nav-link" href="#contact">Contact</a>
-        <a class="nav-link" href="#about">About</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+        <ul class="navbar-nav ms-auto d-flex align-items-center">
+          <li class="nav-item">
+            <a href="/login" class="btn btn-light me-3">Internet Banking</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -95,5 +144,7 @@
       <a href="/register" class="btn btn-outline-light">Register</a>
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
